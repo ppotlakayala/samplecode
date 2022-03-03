@@ -1,15 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.mycompany.app</groupId>
+  <modelVersion>4.0.3</modelVersion>
+  <groupId>org.talend.ci</groupId>
   <artifactId>my-app</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.2-SNAPSHOT</version>
   <name>my-app</name>
   <url>http://maven.apache.org</url>
 
   <properties>
-      <!-- This property will be set by the Maven Dependency plugin -->
+      <!-- This property will be set by the Maven Dependency plugins -->
       <annotatedJdk>${org.checkerframework:jdk8:jar}</annotatedJdk>
   </properties>
 
@@ -23,7 +23,7 @@
     <dependency>
         <groupId>org.checkerframework</groupId>
         <artifactId>checker</artifactId>
-        <version>1.9.4</version>
+        <version>1.9.5</version>
     </dependency>
     <dependency>
         <groupId>org.checkerframework</groupId>
@@ -33,8 +33,29 @@
     <dependency>
         <groupId>org.checkerframework</groupId>
         <artifactId>jdk8</artifactId>
-        <version>1.9.4</version>
-    </dependency>
+        <version>1.9.5</version>
+	  </dependency>
+	   <dependency>
+                        <groupId>org.codehaus.plexus</groupId>
+                        <artifactId>plexus-utils</artifactId>
+                        <version>3.0.24</version>
+                </dependency>
+                <dependency>
+                        <groupId>commons-codec</groupId>
+                        <artifactId>commons-codec</artifactId>
+                        <version>1.9</version>
+                </dependency>
+                <dependency>
+                        <groupId>commons-lang</groupId>
+                        <artifactId>commons-lang</artifactId>
+                        <version>2.6</version>
+                </dependency>
+                <dependency>
+                        <groupId>commons-io</groupId>
+                        <artifactId>commons-io</artifactId>
+                        <version>2.5</version>
+                </dependency>
+
   </dependencies>
   <build>
     <plugins>
@@ -95,12 +116,12 @@
               <source>1.8</source>
               <target>1.8</target>
               <fork>true</fork>
-              <!-- Add all the checkers you want to enable here -->
+              <!-- Add all the checkers you wanted to enable here -->
               <annotationProcessors>
                   <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
               </annotationProcessors>
               <compilerArgs>
-                  <!-- location of the annotated JDK, which comes from a Maven dependency -->
+                  <!-- locations of the annotated JDK, which comes from a Maven dependency -->
                   <arg>-Xbootclasspath/p:${annotatedJdk}</arg>
               </compilerArgs>
           </configuration>
